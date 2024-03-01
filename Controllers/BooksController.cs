@@ -22,7 +22,7 @@ public class BooksController : Controller
 
     public IActionResult ViewAll()
     {
-        var books = _library.Books;
+        var books = _library.Books.ToList();
         var viewModel = new BooksViewModel
         {
             Books = books,
@@ -48,8 +48,8 @@ public class BooksController : Controller
     [HttpPost]
     public IActionResult Register([FromForm] Book book)
     {
-        book.Id = _library.Books.Count + 1;
         _library.Books.Add(book);
+        _library.SaveChanges();
         return RedirectToAction(nameof(ViewAll));
     }
 }
