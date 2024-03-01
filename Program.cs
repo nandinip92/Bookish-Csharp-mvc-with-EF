@@ -1,8 +1,11 @@
+using Bookish;
 using NLog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<Library>();
 
 builder.Services.AddLogging(loggingBuilder =>
 {

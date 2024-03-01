@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Bookish.Models;
+using Bookish.Models.View;
 
 namespace Bookish.Controllers;
 

@@ -1,4 +1,4 @@
-namespace Bookish.Models;
+namespace Bookish.Models.View;
 
 public class ErrorViewModel
 {
