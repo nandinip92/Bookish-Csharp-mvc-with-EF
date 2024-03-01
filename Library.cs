@@ -25,6 +25,9 @@ public class Library
             Author = "Paola",
         };
 
+        Books.Add(book1);
+        Books.Add(book2);
+
         var book1Copy1 = new Copy
         {
             Id = 1,
@@ -48,6 +51,10 @@ public class Library
         book1.Copies.Add(book1Copy2);
         book2.Copies.Add(book2Copy1);
 
+        Copies.Add(book1Copy1);
+        Copies.Add(book1Copy2);
+        Copies.Add(book2Copy1);
+
         var member1 = new Member
         {
             Id = 1,
@@ -58,6 +65,9 @@ public class Library
             Id = 2,
             Name = "Dani",
         };
+
+        Members.Add(member1);
+        Members.Add(member2);
 
         var loan1 = new Loan
         {
@@ -84,5 +94,16 @@ public class Library
             DateBorrowed = DateOnly.FromDateTime(DateTime.Today).AddDays(-4),
             DateDueBack = DateOnly.FromDateTime(DateTime.Today).AddDays(10),
         };
+
+        member1.LoanHistory.Add(loan1);
+        book1Copy1.LoanHistory.Add(loan1);
+        member1.LoanHistory.Add(loan2);
+        book2Copy1.LoanHistory.Add(loan2);
+        member2.LoanHistory.Add(loan3);
+        book1Copy1.LoanHistory.Add(loan3);
+
+        Loans.Add(loan1);
+        Loans.Add(loan2);
+        Loans.Add(loan3);
     }
 }

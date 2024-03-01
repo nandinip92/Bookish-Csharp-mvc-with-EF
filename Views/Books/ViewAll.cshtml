@@ -1,0 +1,22 @@
+@using Bookish.Models.View;
+@model BooksViewModel;
+
+@{
+    ViewData["Title"] = "Books List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Here are our lovely books:</h1>
+    <ul>
+        @{
+            foreach (var book in Model.Books)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Books" asp-action="ViewIndividual" asp-route-id="@book.Id">
+                        @book.Title <small>by @book.Author</small>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>

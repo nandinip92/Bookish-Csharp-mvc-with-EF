@@ -1,0 +1,12 @@
+@using Bookish.Models.Data;
+@model Book;
+
+@{
+    ViewData["Title"] = @Model.Title;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Title</h1>
+    <h2>By @Model.Author</h2>
+    <p>Number of copies: @Model.Copies.Count</p>
+</div>
