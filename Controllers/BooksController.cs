@@ -62,22 +62,19 @@ public class BooksController : Controller
         // return View();
     }
 
-    public IActionResult AddCopy([FromRoute] int id)
+    public IActionResult Unregister()
     {
-        var matchingBook = _library.Books.SingleOrDefault(book => book.Id == id);
-        if (matchingBook == null)
-        {
-            return NotFound();
-        }
-        return View(matchingBook);
+        var books = _library.Books.Include(Book => Book.Copies).ToList();
+        var viewModel = new BooksViewModel { Books = books, };
+        return View(viewModel);
     }
 
     [HttpPost]
-    public IActionResult AddCopy([FromRoute] int id, [FromForm] Copy copy)
+    public IActionResult Unregister([FromRoute] int id)
     {
-        copy.BookId = id;
-        _library.Copies.Add(copy);
+        var matchingBook = _library.Books.Where(book => book.Id == id).Single();
+        _library.Books.Remove(matchingBook);
         _library.SaveChanges();
-        return RedirectToAction(nameof(AddCopy));
+        return RedirectToAction(nameof(ViewAll));
     }
 }
