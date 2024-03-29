@@ -16,7 +16,7 @@
             <h2>By @Model.Author</h2>
             <p>Current Number of copies: @Model.Copies.Count</p>
         </div>
-        <div>
+        <div >
             <p Condition>Please enter the condition of the new copy:</p>
             @{
                 foreach (var condition in Enum.GetValues<Condition>())
